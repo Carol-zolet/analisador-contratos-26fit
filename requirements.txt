@@ -1,5 +1,5 @@
-streamlit>=1.30.0
-pymupdf==1.23.5  # For PDF processing (fitz)
-sqlalchemy>=2.0.0
-google-generativeai>=0.3.0
-python-dotenv>=1.0.0  # For loading environment variables
+streamlit>=1.31.0
+google-generativeai>=0.3.2
+sqlalchemy>=2.0.25
+pymupdf==1.24.1
+pandas>=2.0.0
