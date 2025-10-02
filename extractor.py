@@ -1,12 +1,14 @@
-import fitz
+import PyPDF2
 import re
 
 def extrair_texto_local(caminho_pdf):
     try:
-        doc = fitz.open(caminho_pdf)
-        texto = [f"--- PÁGINA {p.number + 1} ---\n{p.get_text('text')}\n\n" for p in doc]
-        doc.close()
-        return "".join(texto), None
+        with open(caminho_pdf, 'rb') as file:
+            reader = PyPDF2.PdfReader(file)
+            texto = ""
+            for i, page in enumerate(reader.pages):
+                texto += f"--- PÁGINA {i + 1} ---\n{page.extract_text()}\n\n"
+        return texto, None
     except Exception as e:
         return None, f"Erro ao ler PDF: {e}"
 
